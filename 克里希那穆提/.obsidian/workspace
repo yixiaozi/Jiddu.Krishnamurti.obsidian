@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "永恒.md",
+            "file": "教育.md",
             "mode": "source",
             "source": false
           }
@@ -77,14 +77,14 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "永恒.md",
+                "file": "教育.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
-                "backlinkCollapsed": true,
-                "unlinkedCollapsed": false
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
               }
             }
           },
@@ -105,7 +105,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "永恒.md",
+                "file": "教育.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -117,7 +117,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "永恒.md"
+                "file": "教育.md"
               }
             }
           }
@@ -125,19 +125,20 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "active": "03d500aee2958d86",
   "lastOpenFiles": [
-    "永恒.md",
-    "反应.md",
+    "教育.md",
     "名称/腐败.md",
+    "资料/参考资料.md",
+    "资料/研究方法.md",
     "词语.md",
-    "自由.md",
-    "我们都处境.md",
+    "反应.md",
+    "方法.md",
     "记忆.md",
-    "学习.md",
     "恐惧.md",
-    "方法.md"
+    "逃避.md"
   ]
 }

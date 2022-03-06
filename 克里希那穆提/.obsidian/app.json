@@ -1,4 +1,10 @@
 {
   "legacyEditor": false,
-  "livePreview": true
+  "livePreview": true,
+  "strictLineBreaks": true,
+  "foldHeading": true,
+  "foldIndent": true,
+  "showLineNumber": true,
+  "attachmentFolderPath": "./.attachments",
+  "promptDelete": false
 }

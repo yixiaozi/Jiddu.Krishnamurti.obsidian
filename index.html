@@ -119,8 +119,12 @@
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
   <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
   <script>
-    const gitalk = new Gitalk({
+    var gitalk = new Gitalk({
       clientID: '80acbd7541edfcbb125b',
       clientSecret: '0e7516f57db51006a78953044a0bc37db9fd1fa2',
       repo: 'Jiddu.Krishnamurti.obsidian',
@@ -130,6 +134,21 @@
       // facebook-like distraction free mode
       distractionFreeMode: true
     })
+    function getGitalk(){
+        gitalk = new Gitalk({
+          clientID: '80acbd7541edfcbb125b',
+          clientSecret: '0e7516f57db51006a78953044a0bc37db9fd1fa2',
+          repo: 'Jiddu.Krishnamurti.obsidian',
+          owner: 'yixiaozi',
+          admin: 'yixiaozi',
+          id:md5(location.href.replace("https://yixiaozi.github.io/Jiddu.Krishnamurti.obsidian/#/","").replace("/","")),
+          // facebook-like distraction free mode
+          distractionFreeMode: true
+          })
+    }
+    $(function() {
+        getGitalk();
+    }); 
   </script>
 </body>
 </html>

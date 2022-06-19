@@ -4,4 +4,4 @@
 
 - 一个记录克里希那穆提思想的地方
 
-[GitHub](https://github.com/yixiaozi/Jiddu.Krishnamurti.obsidian)
+[资料分享](/资料/参考资料.md)  [GitHub](https://github.com/yixiaozi/Jiddu.Krishnamurti.obsidian)  

@@ -5,7 +5,6 @@
 # 工具
 - [obsidian](https://obsidian.md/):一个基于Markdown的笔记软件，只是知识点的链接。
 
-
 # 关于克里希那穆提
 ![克里希那穆提肖像](附件/图片/250px-Jiddu_Krishnamurti_01.jpg)
 

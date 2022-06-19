@@ -27,16 +27,13 @@
       auto2top: true,
       search: 'auto', // 默认值
       search : [
-        '/',            // => /README.md
-        '/guide',       // => /guide.md
-        '/get-started', // => /get-started.md
-        '/zh-cn/',      // => /zh-cn/README.md
+        '*',            // => /README.md
       ],
 
       // 完整配置参数
       search: {
-        maxAge: 86400000, // 过期时间，单位毫秒，默认一天
-        paths: [], // or 'auto'
+        maxAge: 86400000000000, // 过期时间，单位毫秒，默认一天
+        paths: "auto", // or 'auto'
         placeholder: 'Type to search',
 
         // 支持本地化
@@ -56,7 +53,7 @@
         // 搜索标题的最大层级, 1 - 6
         depth: 6,
 
-        hideOtherSidebarContent: false, // 是否隐藏其他侧边栏内容
+        hideOtherSidebarContent: true, // 是否隐藏其他侧边栏内容
 
         // 避免搜索索引冲突
         // 同一域下的多个网站之间

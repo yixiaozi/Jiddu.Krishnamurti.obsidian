@@ -22,14 +22,11 @@
     window.$docsify = {
       name: '克里希那穆提知识库',
       // repo: 'yixiaozi/Jiddu.Krishnamurti.obsidian',
-      loadSidebar: true,
-      subMaxLevel: 0,
       auto2top: true,
       search: 'auto', // 默认值
       search : [
         '*',            // => /README.md
       ],
-
       // 完整配置参数
       search: {
         maxAge: 86400000000000, // 过期时间，单位毫秒，默认一天
@@ -87,7 +84,13 @@
       //   tabComments: true,      // default
       //   tabHeadings: true       // default
       // }
-      ga: 'GTM-KN3B4L3'
+      ga: 'GTM-KN3B4L3',
+      loadSidebar: true,
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md',
+      },
+      subMaxLevel: 3,
+      sidebarDisplayLevel: 1, // set sidebar display level
   }
   </script>
   <!-- Docsify v4 -->
@@ -101,6 +104,8 @@
   <!-- <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script> -->
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/ga.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar-folder.min.css" />
   <style>
     :root {
       --docsifytabs-border-color: #ededed;

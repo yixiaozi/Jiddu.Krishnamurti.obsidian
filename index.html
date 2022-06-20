@@ -15,6 +15,7 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <link rel="shortcut icon" type="image/x-icon" href="附件/Tools/logo.ico" />
 </head>
 <body>
   <div id="app">Truth is pathless land.</div>
@@ -136,24 +137,44 @@
       distractionFreeMode: true
     })
     function getGitalk(){
-        gitalk = new Gitalk({
-          clientID: '80acbd7541edfcbb125b',
-          clientSecret: '0e7516f57db51006a78953044a0bc37db9fd1fa2',
-          repo: 'Jiddu.Krishnamurti.obsidian',
-          owner: 'yixiaozi',
-          admin: 'yixiaozi',
-          id:md5(location.href.replace("https://yixiaozi.github.io/Jiddu.Krishnamurti.obsidian/#/","").replace("/","")),
-          // facebook-like distraction free mode
-          distractionFreeMode: true
-          })
+      var str = $('.content').html();
+      var newstr = str.replace(/\[+\W+?\]+/g,function(w){return "<font color=red class='WordsEntity'>"+w.replace(/\[+/g,"").replace(/\]+/g,"")+"</font>"})
+      $('.content').html(newstr);
+
+      $(".WordsEntity").on("click",function(){
+        if ($(this).length > 0) {
+          var str = $(this).text();
+          $(".sidebar-nav a[title='"+str+"']")[$(".sidebar-nav a[title='"+str+"']").length-1].click()
+        }
+      })
+
+      gitalk = new Gitalk({
+        clientID: '80acbd7541edfcbb125b',
+        clientSecret: '0e7516f57db51006a78953044a0bc37db9fd1fa2',
+        repo: 'Jiddu.Krishnamurti.obsidian',
+        owner: 'yixiaozi',
+        admin: 'yixiaozi',
+        id:md5(location.href.replace("https://yixiaozi.github.io/Jiddu.Krishnamurti.obsidian/#/","").replace("/","")),
+        // facebook-like distraction free mode
+        distractionFreeMode: true
+        })
     }
+    $(document).ready(function(){
+      // $(".WordsEntity").click(function(){
+      //   var str = $(this).text();
+      //   $(".sidebar-nav a[title='"+str+"']")[$(".sidebar-nav a[title='"+str+"']").length-1].click()
+      // })
+      
+    })
   </script>
 <script src="https://apps.elfsight.com/p/platform.js" defer></script>
 <div class="elfsight-app-d4dabc33-5352-48c1-8dda-b36a7a3b4c3b"></div>
   <style>
     .cnNKzZ>a{
       display: none!important;
-      
+    }
+    .WordsEntity{
+      cursor:pointer
     }
   </style>
   <script>

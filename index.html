@@ -138,7 +138,7 @@
     })
     function getGitalk(){
       var str = $('.content').html();
-      var newstr = str.replace(/\[+\W+?\]+/g,function(w){return "<font color=red class='WordsEntity'>"+w.replace(/\[+/g,"").replace(/\]+/g,"")+"</font>"})
+      var newstr = str.replace(/\[+\W+?\]+/g,function(w){return "<font class='WordsEntity'>"+w.replace(/\[+/g,"").replace(/\]+/g,"")+"</font>"})
       $('.content').html(newstr);
 
       $(".WordsEntity").on("click",function(){
@@ -174,7 +174,12 @@
       display: none!important;
     }
     .WordsEntity{
-      cursor:pointer
+      cursor:pointer;
+      color: #58D68D;
+      font-weight: bold;
+    }
+    .sidebar{
+      background-color: ghostwhite;
     }
   </style>
   <script>

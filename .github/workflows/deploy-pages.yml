@@ -1,0 +1,83 @@
+# 推送到 main：同时部署到 GitHub Pages 与个人站 krishnamurti.mantoublog.top
+# Pages：Settings → Pages → Source 选「GitHub Actions」
+# 服务器：仓库 Secrets 配置 DEPLOY_HOST / DEPLOY_USER / DEPLOY_SSH_KEY / DEPLOY_PATH
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: deploy-site
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare publish directory
+        run: |
+          mkdir -p _site
+          # 排除 git / 工作流 / 本地临时与 Obsidian 同步残留
+          rsync -a \
+            --exclude '.git' \
+            --exclude '.github' \
+            --exclude '.tmp_*' \
+            --exclude '.tmp_deploy_keys' \
+            --exclude '_site' \
+            --exclude '.obsidian' \
+            --exclude '.history' \
+            --exclude '_SYNCAPP' \
+            ./ _site/
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Upload server artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-files
+          path: _site
+          retention-days: 1
+
+  deploy-pages:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  deploy-server:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download site files
+        uses: actions/download-artifact@v4
+        with:
+          name: site-files
+          path: _site
+
+      - name: Deploy to VPS via rsync
+        uses: burnett01/rsync-deployments@v9
+        with:
+          switches: -avz --delete --exclude '.well-known'
+          path: _site/
+          remote_path: ${{ secrets.DEPLOY_PATH }}
+          remote_host: ${{ secrets.DEPLOY_HOST }}
+          remote_user: ${{ secrets.DEPLOY_USER }}
+          remote_key: ${{ secrets.DEPLOY_SSH_KEY }}

@@ -3,3 +3,5 @@
 *.json
 /.obsidian
 /.history
+.tmp_*
+.tmp_deploy_keys/
